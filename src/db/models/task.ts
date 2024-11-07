@@ -3,8 +3,8 @@ import mongoose, { Document, Schema } from "mongoose";
 interface ITask extends Document {
   title: string;
   description?: string;
-  status: "completed" | "incomplete";
-  userId: mongoose.Schema.Types.ObjectId;
+  status: "completed" | "incomplete" | "pending";
+  user_id: mongoose.Schema.Types.ObjectId;
 }
 
 const taskSchema: Schema = new mongoose.Schema(
@@ -17,13 +17,14 @@ const taskSchema: Schema = new mongoose.Schema(
     description: {
       type: String,
       trim: true,
+      default: "",
     },
     status: {
       type: String,
-      enum: ["completed", "incomplete"],
+      enum: ["completed", "incomplete", "pending"],
       default: "incomplete",
     },
-    userId: {
+    user_id: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "User",
       required: true,
