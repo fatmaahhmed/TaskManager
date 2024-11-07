@@ -23,7 +23,7 @@ export const login = asyncHandler(
       throw new ApiError("Invalid email or password", 401);
     }
     req.params.user_id = user._id.toString();
-    req.email = user.email;
+    req.body.email = user.email;
     next();
     res.status(200).json({ message: "Login successful", token: req.token });
   }

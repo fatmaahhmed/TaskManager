@@ -12,24 +12,23 @@ export const signUp = asyncHandler(
     req.body.password = password;
     console.log(`req.body ${JSON.stringify(req.body)}`);
     const user = new User({ ...req.body });
-    // check if user exists
-    // find user by email
-
     const existing = await User.findOne({ email: user.email });
     if (existing) {
       res.status(400).json({ message: "User already exists" });
       return;
     }
-
+    let newuser: { _id?: string } = {};
     await user
       .save()
       .then((user) => {
+        newuser["_id"] = user._id as string;
         console.log(user);
       })
       .catch((err) => {
         console.log(err);
       });
-    // req.params.user_id = user.user_id.toString();
+    console.log(`newuser ${JSON.stringify(newuser)}`);
+    req.params.user_id = newuser._id as string;
     req.body.email = user.email;
     next();
     const message = `User added successfully`;
