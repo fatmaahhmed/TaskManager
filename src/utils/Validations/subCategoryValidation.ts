@@ -3,16 +3,12 @@ import { body, param } from "express-validator";
 import ApiError from "../err/ApiErrorHandler";
 import { validationErrors } from "../../middlewares/validation/validatorMiddleware";
 
-export const validateSubCategory = [
-  body("category_name")
+export const validateTask = [
+  body("title")
     .notEmpty()
-    .withMessage("Category name is required")
+    .withMessage("task Title is required")
     .isString()
-    .withMessage("Category name must be a string"),
-  body("parent_id")
-    .optional()
-    .isInt()
-    .withMessage("Parent ID must be an integer"),
+    .withMessage("task name must be a string"),
   param("user_id")
     .notEmpty()
     .withMessage("User ID is required")
@@ -21,64 +17,50 @@ export const validateSubCategory = [
 
   validationErrors,
 ];
-
-export const validateDeleteSubCategory = [
-  body().custom((value, { req }) => {
-    if (Object.keys(req.body).length === 0) {
-      throw new ApiError(
-        "You must provide: subcategory_name or subcategory_id at least one",
-        400
-      );
-    }
-    return true;
-  }),
-
-  body("subcategory_name")
-    .optional()
+export const validateTaskStatus = [
+  body("status")
+    .notEmpty()
+    .withMessage("task status is required")
     .isString()
-    .withMessage("Category name must be a string"),
+    .withMessage("task name must be a string")
+    .isIn(["incomplete", "complete", "pending"])
+    .withMessage("task status must be either complete or incomplete"),
+  validationErrors,
+];
 
-  param("category_id")
+export const validateDeleteTask = [
+  param("task_id")
     .notEmpty()
-    .withMessage("Category ID is required")
+    .withMessage("task ID is required")
     .isInt()
-    .withMessage("Category ID must be an integer"),
-
-  param("user_id")
-    .notEmpty()
-    .withMessage("User ID is required")
-    .isInt()
-    .withMessage("User ID must be an integer"),
+    .withMessage("task ID must be an integer"),
 
   validationErrors,
 ];
 
-export const validateUpdateSubCategory = [
+export const validateUpdateTask = [
   body().custom((value, { req }) => {
     if (Object.keys(req.body).length === 0) {
       throw new ApiError(
-        "You must provide: subcategory_name or subcategory_id at least one",
+        "You must provide: title or status or description at least one",
         400
       );
     }
     return true;
   }),
-  body("subcategory_name")
+  body("title")
     .optional()
     .isString()
     .withMessage("Category name must be a string"),
-  body("category_id")
+  body("description")
     .optional()
-    .isInt()
-    .withMessage("Category ID must be an integer"),
-  body("parent_id")
+    .isString()
+    .withMessage("Category description must be a string"),
+  body("status")
     .optional()
-    .isInt()
-    .withMessage("Parent ID must be an integer"),
-  param("user_id")
-    .notEmpty()
-    .withMessage("User ID is required")
-    .isInt()
-    .withMessage("User ID must be an integer"),
+    .isString()
+    .withMessage("Category status must be a string")
+    .isIn(["incomplete", "complete", "pending"])
+    .withMessage("Category status must be either complete or incomplete"),
   validationErrors,
 ];

@@ -5,6 +5,12 @@ import {
   getAllTasks,
   updateTask,
 } from "../../controller/tasks/tasks";
+import {
+  validateDeleteTask,
+  validateTask,
+  validateTaskStatus,
+  validateUpdateTask,
+} from "../../utils/Validations/subCategoryValidation";
 
 import { Router } from "express";
 import { isAuthenticated } from "../../middlewares/auth/verifyTokenWithOptionalRole";
@@ -12,7 +18,22 @@ import { isAuthenticated } from "../../middlewares/auth/verifyTokenWithOptionalR
 export const TaskManagerRoutes = Router();
 
 TaskManagerRoutes.get("/", isAuthenticated(), getAllTasks);
-TaskManagerRoutes.get("/status", isAuthenticated(), filterTasks);
-TaskManagerRoutes.post("/", isAuthenticated(), createTask);
-TaskManagerRoutes.put("/:id", isAuthenticated(), updateTask);
-TaskManagerRoutes.delete("/:id", isAuthenticated(), deleteTask);
+TaskManagerRoutes.get(
+  "/status",
+  isAuthenticated(),
+  validateTaskStatus,
+  filterTasks
+);
+TaskManagerRoutes.post("/", validateTask, isAuthenticated(), createTask);
+TaskManagerRoutes.put(
+  "/:id",
+  isAuthenticated(),
+  validateUpdateTask,
+  updateTask
+);
+TaskManagerRoutes.delete(
+  "/:id",
+  isAuthenticated(),
+  validateDeleteTask,
+  deleteTask
+);
