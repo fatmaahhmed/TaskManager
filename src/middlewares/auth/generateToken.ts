@@ -6,7 +6,7 @@ import jwt from "jsonwebtoken";
 require("dotenv").config();
 export type JwtPayload = {
   email: string;
-  user_id: number;
+  user_id: string;
 };
 
 export const generateAuthToken = async (
@@ -19,8 +19,8 @@ export const generateAuthToken = async (
     throw new Error("Private key is not defined in environment variables.");
   }
   const payload: JwtPayload = {
-    email: req.email || "",
-    user_id: +req.params.user_id,
+    email: req.body.email || "",
+    user_id: req.params.user_id,
   };
   console.log(`payload: ${JSON.stringify(payload)}`);
   const token = jwt.sign(payload, privateKey, { expiresIn: "5h" });

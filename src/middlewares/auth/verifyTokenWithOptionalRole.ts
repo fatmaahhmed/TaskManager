@@ -18,12 +18,9 @@ async function decodeToken(
     throw new ApiError("Token verification failed", 401);
   }
 }
-
-// Properly typed middleware
-export const isAuthenticated = (role: string = "not defined") => {
+export const isAuthenticated = () => {
   return async (req: ExtendedRequest, res: Response, next: NextFunction) => {
     try {
-      console.log("Role passed to isAuthenticated:", role);
       const token = req.headers.authorization?.split(" ")[1];
       if (!token) {
         res.status(401).json({ message: "Unauthorized: No token provided" });
@@ -38,17 +35,11 @@ export const isAuthenticated = (role: string = "not defined") => {
       }
       const decoded = await decodeToken(token, jwtPrivateKey);
       console.log("decoded Token-->", decoded);
-      if (role == "not defined") {
-        // role = decoded.role;
-      }
-      // if (decoded.role !== role) {
-      //   res.status(403).json({ message: "Forbidden: Access is denied" });
-      //   return;
-      // }
+      req.body.email = decoded.email.toString();
       req.params.user_id = decoded.user_id.toString();
-      // req.role = decoded.role;
+
       console.log("req.params.user_id-->", req.params.user_id);
-      console.log("req.role-->", req.role);
+
       next();
     } catch (error) {
       console.error("Token verification failed:", error);
