@@ -10,7 +10,7 @@ import {
   validateTask,
   validateTaskStatus,
   validateUpdateTask,
-} from "../../utils/Validations/subCategoryValidation";
+} from "../../utils/Validations/taskValidation";
 
 import { Router } from "express";
 import { isAuthenticated } from "../../middlewares/auth/verifyTokenWithOptionalRole";
