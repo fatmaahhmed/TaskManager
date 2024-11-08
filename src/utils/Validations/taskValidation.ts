@@ -23,11 +23,7 @@ export const validateTaskStatus = [
 ];
 
 export const validateDeleteTask = [
-  param("id")
-    .notEmpty()
-    .withMessage("task ID is required")
-    .isInt()
-    .withMessage("task ID must be an integer"),
+  param("id").notEmpty().withMessage("task ID is required"),
 
   validationErrors,
 ];

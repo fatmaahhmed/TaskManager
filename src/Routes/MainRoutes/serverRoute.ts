@@ -17,7 +17,7 @@ const applyApiRoute = (app: express.Application) => {
 
 export const applyRoutes = (app: express.Application) => {
   app.get("/", (req, res) => {
-    res.send("MAIN ROUTE : Welcome to Task Manager API");
+    res.send("MAIN ROUTE : Welcome to Task Manager API home page");
   });
   app.get("/test", isAuthenticated(), (req, res) => {
     res.send("Middleware with parameter executed!");
