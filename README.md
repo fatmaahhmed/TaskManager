@@ -1,4 +1,3 @@
-
 ```markdown
 # Task Manager API
 
@@ -24,19 +23,22 @@ This is a Task Manager API built using Node.js, Express, and MongoDB. The API al
 1. Clone the repository
 
 2. Install dependencies:
-   ```sh
-   npm install
-   ```
+```
+
+npm install
+
+````
 
 3. Create a `.env` file in the root directory and add the following environment variables:
-   ```env
-   PORT=4000
-   MONGO_URI=your_mongodb_connection_string
-   JWTPRIVATEKEY=your_jwt_private_key
-   NODE_ENV=development
-   ```
+```env
+PORT=4000
+MONGO_URI=your_mongodb_connection_string
+JWTPRIVATEKEY=your_jwt_private_key
+NODE_ENV=development
+````
 
 4. Start the server:
+
    ```sh
    npm run dev
    ```
@@ -144,5 +146,7 @@ tsconfig.json
 ## License
 
 This project is licensed under the MIT License.
+
 ```
 
+```
