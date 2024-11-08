@@ -146,4 +146,3 @@ tsconfig.json
 This project is licensed under the MIT License.
 ```
 
-Save this content in a file named `README.md` in the root directory of your project.
