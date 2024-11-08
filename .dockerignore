@@ -1,0 +1,28 @@
+# Node modules
+node_modules
+
+# Logs
+logs
+*.log
+
+# Dependency directories
+.npm
+
+# dotenv environment variable files
+.env
+.env.test
+
+# Editor directories and files
+.idea
+.vscode
+*.sublime-project
+*.sublime-workspace
+
+# OS generated files
+.DS_Store
+
+# Coverage directory used by tools like istanbul
+coverage
+
+# Build output
+dist
