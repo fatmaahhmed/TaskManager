@@ -23,12 +23,16 @@ This is a Task Manager API built using Node.js, Express, and MongoDB. The API al
 1. Clone the repository
 
 2. Install dependencies:
+<<<<<<< HEAD
 ```
 
 npm install
 
 ````
 
+=======
+   npm install
+>>>>>>> 04b2ce67a4ed3ef100d47dc31dee0960d1a31ce5
 3. Create a `.env` file in the root directory and add the following environment variables:
 ```env
 PORT=4000
@@ -38,12 +42,34 @@ NODE_ENV=development
 ````
 
 4. Start the server:
+<<<<<<< HEAD
 
    ```sh
+=======
+   ```
+>>>>>>> 04b2ce67a4ed3ef100d47dc31dee0960d1a31ce5
    npm run dev
    ```
 
 5. The server will be running on `http://localhost:4000`. Swagger documentation is available at `http://localhost:4000/api-docs`.
+6. First, install ts-node and typescript if you haven't already:
+   "npm install -g ts-node typescript"
+8. Compile TypeScript to JavaScript:tsc
+9. Run the compiled JavaScript file
+   "node dist/index.js"
+
+
+```
+## Docker Setup:
+```
+
+
+```
+1.Build and run the Docker container:
+   docker build -t taskmanager .
+   docker run -d --name taskmanagerContainer --env-file .env -p 4000:4000 taskmanager
+```
+
 
 ## API Endpoints
 
