@@ -6,8 +6,7 @@ dotenv.config();
 export async function dbConnection() {
   try {
     const mongoUri =
-      process.env.MONGO_URI ||
-      "mongodb+srv://TaskManager:Admin%40123@taskmanager.k1wuj.mongodb.net/TaskManager?retryWrites=true&w=majority";
+      process.env.MONGO_URI ;
     console.log("mongoUri-->", mongoUri);
 
     if (!mongoUri) {
