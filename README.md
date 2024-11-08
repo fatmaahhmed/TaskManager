@@ -13,63 +13,65 @@ This is a Task Manager API built using Node.js, Express, and MongoDB. The API al
 
 ## Setup Instructions
 
-### Prerequisites
+## Prerequisites
 
 - Node.js (v14 or higher)
 - MongoDB
+```
 
 ### Installation
 
+```
 1. Clone the repository
-
-2. Install dependencies:
-<<<<<<< HEAD
 ```
 
-npm install
+```
+2. Install dependencies:
+    npm install
+```
 
-````
-
-=======
-   npm install
->>>>>>> 04b2ce67a4ed3ef100d47dc31dee0960d1a31ce5
+```
 3. Create a `.env` file in the root directory and add the following environment variables:
-```env
-PORT=4000
-MONGO_URI=your_mongodb_connection_string
-JWTPRIVATEKEY=your_jwt_private_key
-NODE_ENV=development
-````
+```
 
+    PORT=4000
+    MONGO_URI=your_mongodb_connection_string
+    JWTPRIVATEKEY=your_jwt_private_key
+
+```
 4. Start the server:
-<<<<<<< HEAD
+    npm run restart
+```
 
-   ```sh
-=======
-   ```
->>>>>>> 04b2ce67a4ed3ef100d47dc31dee0960d1a31ce5
-   npm run dev
-   ```
-
+```
 5. The server will be running on `http://localhost:4000`. Swagger documentation is available at `http://localhost:4000/api-docs`.
+```
+
+```
 6. First, install ts-node and typescript if you haven't already:
    "npm install -g ts-node typescript"
-8. Compile TypeScript to JavaScript:tsc
-9. Run the compiled JavaScript file
+```
+
+```
+7. Compile TypeScript to JavaScript:tsc
+```
+
+```
+8. Run the compiled JavaScript file
    "node dist/index.js"
-
-
-```
-## Docker Setup:
 ```
 
+### Docker Setup:
+
+1.Build and run the Docker container
 
 ```
-1.Build and run the Docker container:
    docker build -t taskmanager .
-   docker run -d --name taskmanagerContainer --env-file .env -p 4000:4000 taskmanager
 ```
 
+```
+Docker run -d --name taskmanagerContainer -v $(pwd)/src:/app/src --env-file .env -p 4000:4000 taskmanager
+```
 
 ## API Endpoints
 
@@ -89,65 +91,119 @@ NODE_ENV=development
 ## Project Structure
 
 ```
-.env
-.gitignore
-.vscode/
-    settings.json
-
-
-package.json
-
-
-src/
-    controller/
-        auth/
-            1-signup.ts
-            2-login.ts
-        tasks/
-            tasks.ts
-    db/
-        db.ts
-        models/
-            task.ts
-            user.ts
-    index.ts
-    middlewares/
-        auth/
-            generateToken.ts
-            verifyTokenWithOptionalRole.ts
-        Err/
-            GlobalErrorHandlerMiddleware.ts
-        log/
-        routes/
-        validation/
-    Routes/
-        Auth/
-            1-signup.ts
-            2-login.ts
-        MainRoutes/
-            serverRoute.ts
-        TaskManager/
-            task.ts
-    swaggerConfig.ts
-    utils/
-        err/
-            ApiErrorHandler.ts
-            handleMongoseerror.ts
-            unhandledRejection.ts
-        HassingPasswordFunction/
-            hashPassword.ts
-        Types/
-            request/
-                request.ts
-                types.ts
-        Validations/
-            loginValidation.ts
-            signUpValidation.ts
-            taskValidation.ts
-
-
-tsconfig.json
-
+➜  TaskManager git:(master) ✗ struct
+├── .dockerignore
+├── .env
+├── .gitignore
+├── .vscode
+│  └── settings.json
+├── dist
+│  ├── controller
+│  │  ├── auth
+│  │  │  ├── 1-signup.js
+│  │  │  └── 2-login.js
+│  │  └── tasks
+│  │    └── tasks.js
+│  ├── db
+│  │  ├── db.js
+│  │  └── models
+│  │    ├── task.js
+│  │    └── user.js
+│  ├── index.js
+│  ├── middlewares
+│  │  ├── auth
+│  │  │  ├── generateToken.js
+│  │  │  └── verifyTokenWithOptionalRole.js
+│  │  ├── Err
+│  │  │  └── GlobalErrorHandlerMiddleware.js
+│  │  ├── log
+│  │  │  └── loggerMiddleware.js
+│  │  ├── routes
+│  │  │  └── mainRoutesMiddleware.js
+│  │  └── validation
+│  │    └── validatorMiddleware.js
+│  ├── Routes
+│  │  ├── Auth
+│  │  │  ├── 1-signup.js
+│  │  │  └── 2-login.js
+│  │  ├── MainRoutes
+│  │  │  └── serverRoute.js
+│  │  └── TaskManager
+│  │    └── task.js
+│  ├── swaggerConfig.js
+│  └── utils
+│    ├── err
+│    │  ├── ApiErrorHandler.js
+│    │  ├── handleMongoseerror.js
+│    │  └── unhandledRejection.js
+│    ├── HassingPasswordFunction
+│    │  └── hashPassword.js
+│    ├── Types
+│    │  └── request
+│    │    ├── request.js
+│    │    └── types.js
+│    └── Validations
+│      ├── loginValidation.js
+│      ├── signUpValidation.js
+│      └── taskValidation.js
+├── dockerfile
+├── nodemon.json
+├── package-lock.json
+├── package.json
+├── README.md
+├── restart.sh
+├── src
+│  ├── .DS_Store
+│  ├── controller
+│  │  ├── auth
+│  │  │  ├── .DS_Store
+│  │  │  ├── 1-signup.ts
+│  │  │  └── 2-login.ts
+│  │  └── tasks
+│  │    └── tasks.ts
+│  ├── db
+│  │  ├── db.ts
+│  │  └── models
+│  │    ├── task.ts
+│  │    └── user.ts
+│  ├── index.ts
+│  ├── middlewares
+│  │  ├── auth
+│  │  │  ├── generateToken.ts
+│  │  │  └── verifyTokenWithOptionalRole.ts
+│  │  ├── Err
+│  │  │  └── GlobalErrorHandlerMiddleware.ts
+│  │  ├── log
+│  │  │  └── loggerMiddleware.ts
+│  │  ├── routes
+│  │  │  └── mainRoutesMiddleware.ts
+│  │  └── validation
+│  │    └── validatorMiddleware.ts
+│  ├── Routes
+│  │  ├── Auth
+│  │  │  ├── 1-signup.ts
+│  │  │  └── 2-login.ts
+│  │  ├── MainRoutes
+│  │  │  └── serverRoute.ts
+│  │  └── TaskManager
+│  │    └── task.ts
+│  ├── swaggerConfig.ts
+│  └── utils
+│    ├── err
+│    │  ├── ApiErrorHandler.ts
+│    │  ├── handleMongoseerror.ts
+│    │  └── unhandledRejection.ts
+│    ├── HassingPasswordFunction
+│    │  └── hashPassword.ts
+│    ├── Types
+│    │  └── request
+│    │    ├── request.ts
+│    │    └── types.ts
+│    └── Validations
+│      ├── loginValidation.ts
+│      ├── signUpValidation.ts
+│      └── taskValidation.ts
+└── tsconfig.json
 
 ```
 
