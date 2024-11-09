@@ -10,8 +10,6 @@ COPY package.json package-lock.json ./
 # Install dependencies
 RUN npm install
 
-# Install development dependencies
-RUN npm install --only=dev
 
 # Copy the rest of the application code to the working directory
 COPY . .
