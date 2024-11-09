@@ -18,7 +18,7 @@ const applyApiRoute = (app: express.Application) => {
 export const applyRoutes = (app: express.Application) => {
   app.get("/", (req, res) => {
     res.send(
-      "MAIN ROUTE : Welcome to Task Manager API home page,hello from docker"
+      "MAIN ROUTE : Welcome to Task Manager API home page,hello from docker now we are in sync docker and gitt"
     );
   });
   app.get("/test", isAuthenticated(), (req, res) => {

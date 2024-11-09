@@ -21,7 +21,7 @@ const applyApiRoute = (app) => {
 };
 const applyRoutes = (app) => {
     app.get("/", (req, res) => {
-        res.send("MAIN ROUTE : Welcome to Task Manager API home page");
+        res.send("MAIN ROUTE : Welcome to Task Manager API home page,hello from docker now we are in sync docker and gitt");
     });
     app.get("/test", (0, verifyTokenWithOptionalRole_1.isAuthenticated)(), (req, res) => {
         res.send("Middleware with parameter executed!");
