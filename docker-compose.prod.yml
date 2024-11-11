@@ -2,12 +2,15 @@
 version: "3"
 services:
   app:
-    container_name: "taskmanagercontainer"
+    container_name: "taskmanagercontainer_prod"
     build: .
     volumes:
-      - .:/app:ro
       - /app/node_modules
     ports:
       - "4000:4000"
+    environment:
+      - node_env=production
     env_file:
       - .env
+# docker-compose -f docker-compose.prod.yml up -d
+# docker-compose -f docker-compose.prod.yml down
