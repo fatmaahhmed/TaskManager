@@ -3,16 +3,11 @@ version: "3"
 services:
   app:
     container_name: "taskmanagercontainer_dev"
-    build: .
     volumes:
       - .:/app:ro
       - /app/node_modules
-    ports:
-      - "4000:4000"
     environment:
       - node_env=development
-    env_file:
-      - .env
 # docker-compose -f docker-compose.dev.yml up -d
 # docker-compose -f docker-compose.dev.yml down
 # docker-compose -f docker-compose.dev.yml exec app /bin/bash

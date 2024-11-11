@@ -1,0 +1,19 @@
+#  docker run -d --name taskmanagercontainer -v $(pwd):/app:ro -v /app/node_modules --env-file .env -p 4000:4000 taskmanager
+version: "3"
+services:
+  app:
+    build: .
+    ports:
+      - "4000:4000"
+    env_file:
+      - .env
+# docker-compose -f docker-compose.yml up -d
+# docker-compose -f docker-compose.yml down
+# docker-compose -f docker-compose.yml -f docker-compose.prod.yml up -d
+# if you want to run the app in development mode, you can use the docker-compose.dev.yml file
+
+# if you want to run the app in production mode, you can use the docker-compose.prod.yml file
+# docker-compose -f docker-compose.yml -f docker-compose.prod.yml up -d
+# docker-compose -f docker-compose.yml -f docker-compose.prod.yml down
+# docker-compose -f docker-compose.yml -f docker-compose.prod.yml exec app /bin/bash
+
